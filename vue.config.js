@@ -33,11 +33,11 @@ module.exports = {
       })
   },
 
-  css: {
+/*  css: {
     loaderOptions: {
       sass: {
         data: '@import "~@/style/imports.scss";',
       },
     },
-  },
+  },*/
 }

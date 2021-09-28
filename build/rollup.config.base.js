@@ -15,7 +15,7 @@ export default {
       mainFields: ['module', 'jsnext:main', 'main', 'browser'],
     }),
     vue({
-      css: true,
+      css: false,
     }),
     babel({
       exclude: 'node_modules/**',
@@ -27,7 +27,7 @@ export default {
       VERSION: JSON.stringify(config.version),
       preventAssignment: false,
     }),
-    postcss(),
+    // postcss(),
     analyze(),
   ],
   watch: {

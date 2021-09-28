@@ -232,7 +232,7 @@
    * @param {Number} version to check
    * @returns {Boolean} isIE
    */
-  function isIE$1(version) {
+  function isIE(version) {
     if (version === 11) {
       return isIE11;
     }
@@ -254,7 +254,7 @@
       return document.documentElement;
     }
 
-    var noOffsetParent = isIE$1(10) ? document.body : null;
+    var noOffsetParent = isIE(10) ? document.body : null;
 
     // NOTE: 1 DOM access here
     var offsetParent = element.offsetParent || null;
@@ -409,13 +409,13 @@
   }
 
   function getSize(axis, body, html, computedStyle) {
-    return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE$1(10) ? parseInt(html['offset' + axis]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')]) : 0);
+    return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? parseInt(html['offset' + axis]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')]) : 0);
   }
 
   function getWindowSizes(document) {
     var body = document.body;
     var html = document.documentElement;
-    var computedStyle = isIE$1(10) && getComputedStyle(html);
+    var computedStyle = isIE(10) && getComputedStyle(html);
 
     return {
       height: getSize('Height', body, html, computedStyle),
@@ -508,7 +508,7 @@
     // considered in DOM in some circumstances...
     // This isn't reproducible in IE10 compatibility mode of IE11
     try {
-      if (isIE$1(10)) {
+      if (isIE(10)) {
         rect = element.getBoundingClientRect();
         var scrollTop = getScroll(element, 'top');
         var scrollLeft = getScroll(element, 'left');
@@ -553,7 +553,7 @@
   function getOffsetRectRelativeToArbitraryNode(children, parent) {
     var fixedPosition = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    var isIE10 = isIE$1(10);
+    var isIE10 = isIE(10);
     var isHTML = parent.nodeName === 'HTML';
     var childrenRect = getBoundingClientRect(children);
     var parentRect = getBoundingClientRect(parent);
@@ -656,7 +656,7 @@
 
   function getFixedPositionOffsetParent(element) {
     // This check is needed to avoid errors in case one of the elements isn't defined for any reason
-    if (!element || !element.parentElement || isIE$1()) {
+    if (!element || !element.parentElement || isIE()) {
       return document.documentElement;
     }
     var el = element.parentElement;
@@ -4995,9 +4995,9 @@
 
   var isEqual_1 = isEqual;
 
-  function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var DEFAULT_OPTIONS = {
     container: false,
     delay: 0,
@@ -5078,7 +5078,7 @@
       });
 
       // apply user options over default ones
-      _options = _objectSpread$2(_objectSpread$2({}, DEFAULT_OPTIONS), _options);
+      _options = _objectSpread$1(_objectSpread$1({}, DEFAULT_OPTIONS), _options);
       _reference.jquery && (_reference = _reference[0]);
       this.show = this.show.bind(this);
       this.hide = this.hide.bind(this); // cache reference and options
@@ -5395,11 +5395,11 @@
 
         this._append(tooltipNode, container);
 
-        var popperOptions = _objectSpread$2(_objectSpread$2({}, options.popperOptions), {}, {
+        var popperOptions = _objectSpread$1(_objectSpread$1({}, options.popperOptions), {}, {
           placement: options.placement
         });
 
-        popperOptions.modifiers = _objectSpread$2(_objectSpread$2({}, popperOptions.modifiers), {}, {
+        popperOptions.modifiers = _objectSpread$1(_objectSpread$1({}, popperOptions.modifiers), {}, {
           arrow: {
             element: this.options.arrowSelector
           }
@@ -5715,9 +5715,9 @@
    * @return {String} placement - The desired title.
    */
 
-  function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var state = {
     enabled: true
   };
@@ -5802,7 +5802,7 @@
       hideOnTargetClick: typeof options.hideOnTargetClick !== 'undefined' ? options.hideOnTargetClick : directive.options.defaultHideOnTargetClick,
       loadingClass: typeof options.loadingClass !== 'undefined' ? options.loadingClass : directive.options.defaultLoadingClass,
       loadingContent: typeof options.loadingContent !== 'undefined' ? options.loadingContent : directive.options.defaultLoadingContent,
-      popperOptions: _objectSpread$1({}, typeof options.popperOptions !== 'undefined' ? options.popperOptions : directive.options.defaultPopperOptions)
+      popperOptions: _objectSpread({}, typeof options.popperOptions !== 'undefined' ? options.popperOptions : directive.options.defaultPopperOptions)
     };
 
     if (result.offset) {
@@ -5858,9 +5858,9 @@
     var content = getContent(value);
     var classes = typeof value.classes !== 'undefined' ? value.classes : directive.options.defaultClass;
 
-    var opts = _objectSpread$1({
+    var opts = _objectSpread({
       title: content
-    }, getOptions(_objectSpread$1(_objectSpread$1({}, _typeof(value) === 'object' ? value : {}), {}, {
+    }, getOptions(_objectSpread(_objectSpread({}, _typeof(value) === 'object' ? value : {}), {}, {
       placement: getPlacement(value, modifiers)
     })));
 
@@ -5902,7 +5902,7 @@
 
         tooltip.setContent(content); // Options
 
-        tooltip.setOptions(_objectSpread$1(_objectSpread$1({}, value), {}, {
+        tooltip.setOptions(_objectSpread(_objectSpread({}, value), {}, {
           placement: getPlacement(value, modifiers)
         }));
       } else {
@@ -5924,1219 +5924,6 @@
       destroyTooltip(el);
     }
   };
-
-  function addListeners(el) {
-    el.addEventListener('click', onClick);
-    el.addEventListener('touchstart', onTouchStart, supportsPassive ? {
-      passive: true
-    } : false);
-  }
-
-  function removeListeners(el) {
-    el.removeEventListener('click', onClick);
-    el.removeEventListener('touchstart', onTouchStart);
-    el.removeEventListener('touchend', onTouchEnd);
-    el.removeEventListener('touchcancel', onTouchCancel);
-  }
-
-  function onClick(event) {
-    var el = event.currentTarget;
-    event.closePopover = !el.$_vclosepopover_touch;
-    event.closeAllPopover = el.$_closePopoverModifiers && !!el.$_closePopoverModifiers.all;
-  }
-
-  function onTouchStart(event) {
-    if (event.changedTouches.length === 1) {
-      var el = event.currentTarget;
-      el.$_vclosepopover_touch = true;
-      var touch = event.changedTouches[0];
-      el.$_vclosepopover_touchPoint = touch;
-      el.addEventListener('touchend', onTouchEnd);
-      el.addEventListener('touchcancel', onTouchCancel);
-    }
-  }
-
-  function onTouchEnd(event) {
-    var el = event.currentTarget;
-    el.$_vclosepopover_touch = false;
-
-    if (event.changedTouches.length === 1) {
-      var touch = event.changedTouches[0];
-      var firstTouch = el.$_vclosepopover_touchPoint;
-      event.closePopover = Math.abs(touch.screenY - firstTouch.screenY) < 20 && Math.abs(touch.screenX - firstTouch.screenX) < 20;
-      event.closeAllPopover = el.$_closePopoverModifiers && !!el.$_closePopoverModifiers.all;
-    }
-  }
-
-  function onTouchCancel(event) {
-    var el = event.currentTarget;
-    el.$_vclosepopover_touch = false;
-  }
-
-  var vclosepopover = {
-    bind: function bind(el, _ref) {
-      var value = _ref.value,
-          modifiers = _ref.modifiers;
-      el.$_closePopoverModifiers = modifiers;
-
-      if (typeof value === 'undefined' || value) {
-        addListeners(el);
-      }
-    },
-    update: function update(el, _ref2) {
-      var value = _ref2.value,
-          oldValue = _ref2.oldValue,
-          modifiers = _ref2.modifiers;
-      el.$_closePopoverModifiers = modifiers;
-
-      if (value !== oldValue) {
-        if (typeof value === 'undefined' || value) {
-          addListeners(el);
-        } else {
-          removeListeners(el);
-        }
-      }
-    },
-    unbind: function unbind(el) {
-      removeListeners(el);
-    }
-  };
-
-  function getInternetExplorerVersion() {
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf('MSIE ');
-
-    if (msie > 0) {
-      // IE 10 or older => return version number
-      return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-    }
-
-    var trident = ua.indexOf('Trident/');
-
-    if (trident > 0) {
-      // IE 11 => return version number
-      var rv = ua.indexOf('rv:');
-      return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-    }
-
-    var edge = ua.indexOf('Edge/');
-
-    if (edge > 0) {
-      // Edge (IE 12+) => return version number
-      return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-    } // other browser
-
-
-    return -1;
-  }
-
-  //
-  var isIE;
-
-  function initCompat() {
-    if (!initCompat.init) {
-      initCompat.init = true;
-      isIE = getInternetExplorerVersion() !== -1;
-    }
-  }
-
-  var script$1 = {
-    name: 'ResizeObserver',
-    props: {
-      emitOnMount: {
-        type: Boolean,
-        default: false
-      },
-      ignoreWidth: {
-        type: Boolean,
-        default: false
-      },
-      ignoreHeight: {
-        type: Boolean,
-        default: false
-      }
-    },
-    mounted: function mounted() {
-      var _this = this;
-
-      initCompat();
-      this.$nextTick(function () {
-        _this._w = _this.$el.offsetWidth;
-        _this._h = _this.$el.offsetHeight;
-
-        if (_this.emitOnMount) {
-          _this.emitSize();
-        }
-      });
-      var object = document.createElement('object');
-      this._resizeObject = object;
-      object.setAttribute('aria-hidden', 'true');
-      object.setAttribute('tabindex', -1);
-      object.onload = this.addResizeHandlers;
-      object.type = 'text/html';
-
-      if (isIE) {
-        this.$el.appendChild(object);
-      }
-
-      object.data = 'about:blank';
-
-      if (!isIE) {
-        this.$el.appendChild(object);
-      }
-    },
-    beforeDestroy: function beforeDestroy() {
-      this.removeResizeHandlers();
-    },
-    methods: {
-      compareAndNotify: function compareAndNotify() {
-        if (!this.ignoreWidth && this._w !== this.$el.offsetWidth || !this.ignoreHeight && this._h !== this.$el.offsetHeight) {
-          this._w = this.$el.offsetWidth;
-          this._h = this.$el.offsetHeight;
-          this.emitSize();
-        }
-      },
-      emitSize: function emitSize() {
-        this.$emit('notify', {
-          width: this._w,
-          height: this._h
-        });
-      },
-      addResizeHandlers: function addResizeHandlers() {
-        this._resizeObject.contentDocument.defaultView.addEventListener('resize', this.compareAndNotify);
-
-        this.compareAndNotify();
-      },
-      removeResizeHandlers: function removeResizeHandlers() {
-        if (this._resizeObject && this._resizeObject.onload) {
-          if (!isIE && this._resizeObject.contentDocument) {
-            this._resizeObject.contentDocument.defaultView.removeEventListener('resize', this.compareAndNotify);
-          }
-
-          this.$el.removeChild(this._resizeObject);
-          this._resizeObject.onload = null;
-          this._resizeObject = null;
-        }
-      }
-    }
-  };
-
-  function normalizeComponent$1(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
-  /* server only */
-  , shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-    if (typeof shadowMode !== 'boolean') {
-      createInjectorSSR = createInjector;
-      createInjector = shadowMode;
-      shadowMode = false;
-    } // Vue.extend constructor export interop.
-
-
-    var options = typeof script === 'function' ? script.options : script; // render functions
-
-    if (template && template.render) {
-      options.render = template.render;
-      options.staticRenderFns = template.staticRenderFns;
-      options._compiled = true; // functional template
-
-      if (isFunctionalTemplate) {
-        options.functional = true;
-      }
-    } // scopedId
-
-
-    if (scopeId) {
-      options._scopeId = scopeId;
-    }
-
-    var hook;
-
-    if (moduleIdentifier) {
-      // server build
-      hook = function hook(context) {
-        // 2.3 injection
-        context = context || // cached call
-        this.$vnode && this.$vnode.ssrContext || // stateful
-        this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
-        // 2.2 with runInNewContext: true
-
-        if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-          context = __VUE_SSR_CONTEXT__;
-        } // inject component styles
-
-
-        if (style) {
-          style.call(this, createInjectorSSR(context));
-        } // register component module identifier for async chunk inference
-
-
-        if (context && context._registeredComponents) {
-          context._registeredComponents.add(moduleIdentifier);
-        }
-      }; // used by ssr in case component is cached and beforeCreate
-      // never gets called
-
-
-      options._ssrRegister = hook;
-    } else if (style) {
-      hook = shadowMode ? function (context) {
-        style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
-      } : function (context) {
-        style.call(this, createInjector(context));
-      };
-    }
-
-    if (hook) {
-      if (options.functional) {
-        // register for functional component in vue file
-        var originalRender = options.render;
-
-        options.render = function renderWithStyleInjection(h, context) {
-          hook.call(context);
-          return originalRender(h, context);
-        };
-      } else {
-        // inject component registration as beforeCreate hook
-        var existing = options.beforeCreate;
-        options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-      }
-    }
-
-    return script;
-  }
-
-  /* script */
-  var __vue_script__$1 = script$1;
-  /* template */
-
-  var __vue_render__$1 = function __vue_render__() {
-    var _vm = this;
-
-    var _h = _vm.$createElement;
-
-    var _c = _vm._self._c || _h;
-
-    return _c("div", {
-      staticClass: "resize-observer",
-      attrs: {
-        tabindex: "-1"
-      }
-    });
-  };
-
-  var __vue_staticRenderFns__$1 = [];
-  __vue_render__$1._withStripped = true;
-  /* style */
-
-  var __vue_inject_styles__$1 = undefined;
-  /* scoped */
-
-  var __vue_scope_id__$1 = "data-v-8859cc6c";
-  /* module identifier */
-
-  var __vue_module_identifier__$1 = undefined;
-  /* functional template */
-
-  var __vue_is_functional_template__$1 = false;
-  /* style inject */
-
-  /* style inject SSR */
-
-  /* style inject shadow dom */
-
-  var __vue_component__$1 = /*#__PURE__*/normalizeComponent$1({
-    render: __vue_render__$1,
-    staticRenderFns: __vue_staticRenderFns__$1
-  }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, undefined, undefined, undefined);
-
-  function install$1(Vue) {
-    // eslint-disable-next-line vue/component-definition-name-casing
-    Vue.component('resize-observer', __vue_component__$1);
-    Vue.component('ResizeObserver', __vue_component__$1);
-  }
-
-  var plugin$1 = {
-    // eslint-disable-next-line no-undef
-    version: "1.0.1",
-    install: install$1
-  };
-
-  var GlobalVue$1 = null;
-
-  if (typeof window !== 'undefined') {
-    GlobalVue$1 = window.Vue;
-  } else if (typeof global !== 'undefined') {
-    GlobalVue$1 = global.Vue;
-  }
-
-  if (GlobalVue$1) {
-    GlobalVue$1.use(plugin$1);
-  }
-
-  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-  function getDefault(key) {
-    var value = directive.options.popover[key];
-
-    if (typeof value === 'undefined') {
-      return directive.options[key];
-    }
-
-    return value;
-  }
-
-  var isIOS = false;
-
-  if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
-    isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  }
-
-  var openPopovers = [];
-
-  var Element = function Element() {};
-
-  if (typeof window !== 'undefined') {
-    Element = window.Element;
-  }
-
-  var script = {
-    name: 'VPopover',
-    components: {
-      ResizeObserver: __vue_component__$1
-    },
-    props: {
-      open: {
-        type: Boolean,
-        default: false
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      placement: {
-        type: String,
-        default: function _default() {
-          return getDefault('defaultPlacement');
-        }
-      },
-      delay: {
-        type: [String, Number, Object],
-        default: function _default() {
-          return getDefault('defaultDelay');
-        }
-      },
-      offset: {
-        type: [String, Number],
-        default: function _default() {
-          return getDefault('defaultOffset');
-        }
-      },
-      trigger: {
-        type: String,
-        default: function _default() {
-          return getDefault('defaultTrigger');
-        }
-      },
-      container: {
-        type: [String, Object, Element, Boolean],
-        default: function _default() {
-          return getDefault('defaultContainer');
-        }
-      },
-      boundariesElement: {
-        type: [String, Element],
-        default: function _default() {
-          return getDefault('defaultBoundariesElement');
-        }
-      },
-      popperOptions: {
-        type: Object,
-        default: function _default() {
-          return getDefault('defaultPopperOptions');
-        }
-      },
-      popoverClass: {
-        type: [String, Array],
-        default: function _default() {
-          return getDefault('defaultClass');
-        }
-      },
-      popoverBaseClass: {
-        type: [String, Array],
-        default: function _default() {
-          return directive.options.popover.defaultBaseClass;
-        }
-      },
-      popoverInnerClass: {
-        type: [String, Array],
-        default: function _default() {
-          return directive.options.popover.defaultInnerClass;
-        }
-      },
-      popoverWrapperClass: {
-        type: [String, Array],
-        default: function _default() {
-          return directive.options.popover.defaultWrapperClass;
-        }
-      },
-      popoverArrowClass: {
-        type: [String, Array],
-        default: function _default() {
-          return directive.options.popover.defaultArrowClass;
-        }
-      },
-      autoHide: {
-        type: Boolean,
-        default: function _default() {
-          return directive.options.popover.defaultAutoHide;
-        }
-      },
-      handleResize: {
-        type: Boolean,
-        default: function _default() {
-          return directive.options.popover.defaultHandleResize;
-        }
-      },
-      openGroup: {
-        type: String,
-        default: null
-      },
-      openClass: {
-        type: [String, Array],
-        default: function _default() {
-          return directive.options.popover.defaultOpenClass;
-        }
-      },
-      ariaId: {
-        default: null
-      }
-    },
-    data: function data() {
-      return {
-        isOpen: false,
-        id: Math.random().toString(36).substr(2, 10)
-      };
-    },
-    computed: {
-      cssClass: function cssClass() {
-        return _defineProperty$1({}, this.openClass, this.isOpen);
-      },
-      popoverId: function popoverId() {
-        return "popover_".concat(this.ariaId != null ? this.ariaId : this.id);
-      }
-    },
-    watch: {
-      open: function open(val) {
-        if (val) {
-          this.show();
-        } else {
-          this.hide();
-        }
-      },
-      disabled: function disabled(val, oldVal) {
-        if (val !== oldVal) {
-          if (val) {
-            this.hide();
-          } else if (this.open) {
-            this.show();
-          }
-        }
-      },
-      container: function container(val) {
-        if (this.isOpen && this.popperInstance) {
-          var popoverNode = this.$refs.popover;
-          var reference = this.$refs.trigger;
-          var container = this.$_findContainer(this.container, reference);
-
-          if (!container) {
-            console.warn('No container for popover', this);
-            return;
-          }
-
-          container.appendChild(popoverNode);
-          this.popperInstance.scheduleUpdate();
-        }
-      },
-      trigger: function trigger(val) {
-        this.$_removeEventListeners();
-        this.$_addEventListeners();
-      },
-      placement: function placement(val) {
-        var _this = this;
-
-        this.$_updatePopper(function () {
-          _this.popperInstance.options.placement = val;
-        });
-      },
-      offset: '$_restartPopper',
-      boundariesElement: '$_restartPopper',
-      popperOptions: {
-        handler: '$_restartPopper',
-        deep: true
-      }
-    },
-    created: function created() {
-      this.$_isDisposed = false;
-      this.$_mounted = false;
-      this.$_events = [];
-      this.$_preventOpen = false;
-    },
-    mounted: function mounted() {
-      var popoverNode = this.$refs.popover;
-      popoverNode.parentNode && popoverNode.parentNode.removeChild(popoverNode);
-      this.$_init();
-
-      if (this.open) {
-        this.show();
-      }
-    },
-    deactivated: function deactivated() {
-      this.hide();
-    },
-    beforeDestroy: function beforeDestroy() {
-      this.dispose();
-    },
-    methods: {
-      show: function show() {
-        var _this2 = this;
-
-        var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-            event = _ref2.event;
-            _ref2.skipDelay;
-            var _ref2$force = _ref2.force,
-            force = _ref2$force === void 0 ? false : _ref2$force;
-
-        if (force || !this.disabled) {
-          this.$_scheduleShow(event);
-          this.$emit('show');
-        }
-
-        this.$emit('update:open', true);
-        this.$_beingShowed = true;
-        requestAnimationFrame(function () {
-          _this2.$_beingShowed = false;
-        });
-      },
-      hide: function hide() {
-        var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-            event = _ref3.event;
-            _ref3.skipDelay;
-
-        this.$_scheduleHide(event);
-        this.$emit('hide');
-        this.$emit('update:open', false);
-      },
-      dispose: function dispose() {
-        this.$_isDisposed = true;
-        this.$_removeEventListeners();
-        this.hide({
-          skipDelay: true
-        });
-
-        if (this.popperInstance) {
-          this.popperInstance.destroy(); // destroy tooltipNode if removeOnDestroy is not set, as popperInstance.destroy() already removes the element
-
-          if (!this.popperInstance.options.removeOnDestroy) {
-            var popoverNode = this.$refs.popover;
-            popoverNode.parentNode && popoverNode.parentNode.removeChild(popoverNode);
-          }
-        }
-
-        this.$_mounted = false;
-        this.popperInstance = null;
-        this.isOpen = false;
-        this.$emit('dispose');
-      },
-      $_init: function $_init() {
-        if (this.trigger.indexOf('manual') === -1) {
-          this.$_addEventListeners();
-        }
-      },
-      $_show: function $_show() {
-        var _this3 = this;
-
-        var reference = this.$refs.trigger;
-        var popoverNode = this.$refs.popover;
-        clearTimeout(this.$_disposeTimer); // Already open
-
-        if (this.isOpen) {
-          return;
-        } // Popper is already initialized
-
-
-        if (this.popperInstance) {
-          this.isOpen = true;
-          this.popperInstance.enableEventListeners();
-          this.popperInstance.scheduleUpdate();
-        }
-
-        if (!this.$_mounted) {
-          var container = this.$_findContainer(this.container, reference);
-
-          if (!container) {
-            console.warn('No container for popover', this);
-            return;
-          }
-
-          container.appendChild(popoverNode);
-          this.$_mounted = true;
-          this.isOpen = false;
-
-          if (this.popperInstance) {
-            requestAnimationFrame(function () {
-              if (!_this3.hidden) {
-                _this3.isOpen = true;
-              }
-            });
-          }
-        }
-
-        if (!this.popperInstance) {
-          var popperOptions = _objectSpread(_objectSpread({}, this.popperOptions), {}, {
-            placement: this.placement
-          });
-
-          popperOptions.modifiers = _objectSpread(_objectSpread({}, popperOptions.modifiers), {}, {
-            arrow: _objectSpread(_objectSpread({}, popperOptions.modifiers && popperOptions.modifiers.arrow), {}, {
-              element: this.$refs.arrow
-            })
-          });
-
-          if (this.offset) {
-            var offset = this.$_getOffset();
-            popperOptions.modifiers.offset = _objectSpread(_objectSpread({}, popperOptions.modifiers && popperOptions.modifiers.offset), {}, {
-              offset: offset
-            });
-          }
-
-          if (this.boundariesElement) {
-            popperOptions.modifiers.preventOverflow = _objectSpread(_objectSpread({}, popperOptions.modifiers && popperOptions.modifiers.preventOverflow), {}, {
-              boundariesElement: this.boundariesElement
-            });
-          }
-
-          this.popperInstance = new Popper(reference, popoverNode, popperOptions); // Fix position
-
-          requestAnimationFrame(function () {
-            if (_this3.hidden) {
-              _this3.hidden = false;
-
-              _this3.$_hide();
-
-              return;
-            }
-
-            if (!_this3.$_isDisposed && _this3.popperInstance) {
-              _this3.popperInstance.scheduleUpdate(); // Show the tooltip
-
-
-              requestAnimationFrame(function () {
-                if (_this3.hidden) {
-                  _this3.hidden = false;
-
-                  _this3.$_hide();
-
-                  return;
-                }
-
-                if (!_this3.$_isDisposed) {
-                  _this3.isOpen = true;
-                } else {
-                  _this3.dispose();
-                }
-              });
-            } else {
-              _this3.dispose();
-            }
-          });
-        }
-
-        var openGroup = this.openGroup;
-
-        if (openGroup) {
-          var popover;
-
-          for (var i = 0; i < openPopovers.length; i++) {
-            popover = openPopovers[i];
-
-            if (popover.openGroup !== openGroup) {
-              popover.hide();
-              popover.$emit('close-group');
-            }
-          }
-        }
-
-        openPopovers.push(this);
-        this.$emit('apply-show');
-      },
-      $_hide: function $_hide() {
-        var _this4 = this;
-
-        // Already hidden
-        if (!this.isOpen) {
-          return;
-        }
-
-        var index = openPopovers.indexOf(this);
-
-        if (index !== -1) {
-          openPopovers.splice(index, 1);
-        }
-
-        this.isOpen = false;
-
-        if (this.popperInstance) {
-          this.popperInstance.disableEventListeners();
-        }
-
-        clearTimeout(this.$_disposeTimer);
-        var disposeTime = directive.options.popover.disposeTimeout || directive.options.disposeTimeout;
-
-        if (disposeTime !== null) {
-          this.$_disposeTimer = setTimeout(function () {
-            var popoverNode = _this4.$refs.popover;
-
-            if (popoverNode) {
-              // Don't remove popper instance, just the HTML element
-              popoverNode.parentNode && popoverNode.parentNode.removeChild(popoverNode);
-              _this4.$_mounted = false;
-            }
-          }, disposeTime);
-        }
-
-        this.$emit('apply-hide');
-      },
-      $_findContainer: function $_findContainer(container, reference) {
-        // if container is a query, get the relative element
-        if (typeof container === 'string') {
-          container = window.document.querySelector(container);
-        } else if (container === false) {
-          // if container is `false`, set it to reference parent
-          container = reference.parentNode;
-        }
-
-        return container;
-      },
-      $_getOffset: function $_getOffset() {
-        var typeofOffset = _typeof(this.offset);
-
-        var offset = this.offset; // One value -> switch
-
-        if (typeofOffset === 'number' || typeofOffset === 'string' && offset.indexOf(',') === -1) {
-          offset = "0, ".concat(offset);
-        }
-
-        return offset;
-      },
-      $_addEventListeners: function $_addEventListeners() {
-        var _this5 = this;
-
-        var reference = this.$refs.trigger;
-        var directEvents = [];
-        var oppositeEvents = [];
-        var events = typeof this.trigger === 'string' ? this.trigger.split(' ').filter(function (trigger) {
-          return ['click', 'hover', 'focus'].indexOf(trigger) !== -1;
-        }) : [];
-        events.forEach(function (event) {
-          switch (event) {
-            case 'hover':
-              directEvents.push('mouseenter');
-              oppositeEvents.push('mouseleave');
-              break;
-
-            case 'focus':
-              directEvents.push('focus');
-              oppositeEvents.push('blur');
-              break;
-
-            case 'click':
-              directEvents.push('click');
-              oppositeEvents.push('click');
-              break;
-          }
-        }); // schedule show tooltip
-
-        directEvents.forEach(function (event) {
-          var func = function func(event) {
-            if (_this5.isOpen) {
-              return;
-            }
-
-            event.usedByTooltip = true;
-            !_this5.$_preventOpen && _this5.show({
-              event: event
-            });
-            _this5.hidden = false;
-          };
-
-          _this5.$_events.push({
-            event: event,
-            func: func
-          });
-
-          reference.addEventListener(event, func);
-        }); // schedule hide tooltip
-
-        oppositeEvents.forEach(function (event) {
-          var func = function func(event) {
-            if (event.usedByTooltip) {
-              return;
-            }
-
-            _this5.hide({
-              event: event
-            });
-
-            _this5.hidden = true;
-          };
-
-          _this5.$_events.push({
-            event: event,
-            func: func
-          });
-
-          reference.addEventListener(event, func);
-        });
-      },
-      $_scheduleShow: function $_scheduleShow() {
-        var skipDelay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-        clearTimeout(this.$_scheduleTimer);
-
-        if (skipDelay) {
-          this.$_show();
-        } else {
-          // defaults to 0
-          var computedDelay = parseInt(this.delay && this.delay.show || this.delay || 0);
-          this.$_scheduleTimer = setTimeout(this.$_show.bind(this), computedDelay);
-        }
-      },
-      $_scheduleHide: function $_scheduleHide() {
-        var _this6 = this;
-
-        var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-        var skipDelay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-        clearTimeout(this.$_scheduleTimer);
-
-        if (skipDelay) {
-          this.$_hide();
-        } else {
-          // defaults to 0
-          var computedDelay = parseInt(this.delay && this.delay.hide || this.delay || 0);
-          this.$_scheduleTimer = setTimeout(function () {
-            if (!_this6.isOpen) {
-              return;
-            } // if we are hiding because of a mouseleave, we must check that the new
-            // reference isn't the tooltip, because in this case we don't want to hide it
-
-
-            if (event && event.type === 'mouseleave') {
-              var isSet = _this6.$_setTooltipNodeEvent(event); // if we set the new event, don't hide the tooltip yet
-              // the new event will take care to hide it if necessary
-
-
-              if (isSet) {
-                return;
-              }
-            }
-
-            _this6.$_hide();
-          }, computedDelay);
-        }
-      },
-      $_setTooltipNodeEvent: function $_setTooltipNodeEvent(event) {
-        var _this7 = this;
-
-        var reference = this.$refs.trigger;
-        var popoverNode = this.$refs.popover;
-        var relatedreference = event.relatedreference || event.toElement || event.relatedTarget;
-
-        var callback = function callback(event2) {
-          var relatedreference2 = event2.relatedreference || event2.toElement || event2.relatedTarget; // Remove event listener after call
-
-          popoverNode.removeEventListener(event.type, callback); // If the new reference is not the reference element
-
-          if (!reference.contains(relatedreference2)) {
-            // Schedule to hide tooltip
-            _this7.hide({
-              event: event2
-            });
-          }
-        };
-
-        if (popoverNode.contains(relatedreference)) {
-          // listen to mouseleave on the tooltip element to be able to hide the tooltip
-          popoverNode.addEventListener(event.type, callback);
-          return true;
-        }
-
-        return false;
-      },
-      $_removeEventListeners: function $_removeEventListeners() {
-        var reference = this.$refs.trigger;
-        this.$_events.forEach(function (_ref4) {
-          var func = _ref4.func,
-              event = _ref4.event;
-          reference.removeEventListener(event, func);
-        });
-        this.$_events = [];
-      },
-      $_updatePopper: function $_updatePopper(cb) {
-        if (this.popperInstance) {
-          cb();
-          if (this.isOpen) this.popperInstance.scheduleUpdate();
-        }
-      },
-      $_restartPopper: function $_restartPopper() {
-        if (this.popperInstance) {
-          var isOpen = this.isOpen;
-          this.dispose();
-          this.$_isDisposed = false;
-          this.$_init();
-
-          if (isOpen) {
-            this.show({
-              skipDelay: true,
-              force: true
-            });
-          }
-        }
-      },
-      $_handleGlobalClose: function $_handleGlobalClose(event) {
-        var _this8 = this;
-
-        var touch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-        if (this.$_beingShowed) return;
-        this.hide({
-          event: event
-        });
-
-        if (event.closePopover) {
-          this.$emit('close-directive');
-        } else {
-          this.$emit('auto-hide');
-        }
-
-        if (touch) {
-          this.$_preventOpen = true;
-          setTimeout(function () {
-            _this8.$_preventOpen = false;
-          }, 300);
-        }
-      },
-      $_handleResize: function $_handleResize() {
-        if (this.isOpen && this.popperInstance) {
-          this.popperInstance.scheduleUpdate();
-          this.$emit('resize');
-        }
-      }
-    }
-  };
-
-  if (typeof document !== 'undefined' && typeof window !== 'undefined') {
-    if (isIOS) {
-      document.addEventListener('touchend', handleGlobalTouchend, supportsPassive ? {
-        passive: true,
-        capture: true
-      } : true);
-    } else {
-      window.addEventListener('click', handleGlobalClick, true);
-    }
-  }
-
-  function handleGlobalClick(event) {
-    handleGlobalClose(event);
-  }
-
-  function handleGlobalTouchend(event) {
-    handleGlobalClose(event, true);
-  }
-
-  function handleGlobalClose(event) {
-    var touch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-    var _loop = function _loop(i) {
-      var popover = openPopovers[i];
-
-      if (popover.$refs.popover) {
-        var contains = popover.$refs.popover.contains(event.composedPath()[0]);
-        requestAnimationFrame(function () {
-          if (event.closeAllPopover || event.closePopover && contains || popover.autoHide && !contains) {
-            popover.$_handleGlobalClose(event, touch);
-          }
-        });
-      }
-    };
-
-    // Delay so that close directive has time to set values
-    for (var i = 0; i < openPopovers.length; i++) {
-      _loop(i);
-    }
-  }
-
-  function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-      if (typeof shadowMode !== 'boolean') {
-          createInjectorSSR = createInjector;
-          createInjector = shadowMode;
-          shadowMode = false;
-      }
-      // Vue.extend constructor export interop.
-      const options = typeof script === 'function' ? script.options : script;
-      // render functions
-      if (template && template.render) {
-          options.render = template.render;
-          options.staticRenderFns = template.staticRenderFns;
-          options._compiled = true;
-          // functional template
-          if (isFunctionalTemplate) {
-              options.functional = true;
-          }
-      }
-      // scopedId
-      if (scopeId) {
-          options._scopeId = scopeId;
-      }
-      let hook;
-      if (moduleIdentifier) {
-          // server build
-          hook = function (context) {
-              // 2.3 injection
-              context =
-                  context || // cached call
-                      (this.$vnode && this.$vnode.ssrContext) || // stateful
-                      (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
-              // 2.2 with runInNewContext: true
-              if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-                  context = __VUE_SSR_CONTEXT__;
-              }
-              // inject component styles
-              if (style) {
-                  style.call(this, createInjectorSSR(context));
-              }
-              // register component module identifier for async chunk inference
-              if (context && context._registeredComponents) {
-                  context._registeredComponents.add(moduleIdentifier);
-              }
-          };
-          // used by ssr in case component is cached and beforeCreate
-          // never gets called
-          options._ssrRegister = hook;
-      }
-      else if (style) {
-          hook = shadowMode
-              ? function (context) {
-                  style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
-              }
-              : function (context) {
-                  style.call(this, createInjector(context));
-              };
-      }
-      if (hook) {
-          if (options.functional) {
-              // register for functional component in vue file
-              const originalRender = options.render;
-              options.render = function renderWithStyleInjection(h, context) {
-                  hook.call(context);
-                  return originalRender(h, context);
-              };
-          }
-          else {
-              // inject component registration as beforeCreate hook
-              const existing = options.beforeCreate;
-              options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-          }
-      }
-      return script;
-  }
-
-  /* script */
-  var __vue_script__ = script;
-  /* template */
-
-  var __vue_render__ = function __vue_render__() {
-    var _vm = this;
-
-    var _h = _vm.$createElement;
-
-    var _c = _vm._self._c || _h;
-
-    return _c("div", {
-      staticClass: "v-popover",
-      class: _vm.cssClass
-    }, [_c("div", {
-      ref: "trigger",
-      staticClass: "trigger",
-      staticStyle: {
-        display: "inline-block"
-      },
-      attrs: {
-        "aria-describedby": _vm.isOpen ? _vm.popoverId : undefined,
-        tabindex: _vm.trigger.indexOf("focus") !== -1 ? 0 : undefined
-      }
-    }, [_vm._t("default")], 2), _vm._v(" "), _c("div", {
-      ref: "popover",
-      class: [_vm.popoverBaseClass, _vm.popoverClass, _vm.cssClass],
-      style: {
-        visibility: _vm.isOpen ? "visible" : "hidden"
-      },
-      attrs: {
-        id: _vm.popoverId,
-        "aria-hidden": _vm.isOpen ? "false" : "true",
-        tabindex: _vm.autoHide ? 0 : undefined
-      },
-      on: {
-        keyup: function keyup($event) {
-          if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])) {
-            return null;
-          }
-
-          _vm.autoHide && _vm.hide();
-        }
-      }
-    }, [_c("div", {
-      class: _vm.popoverWrapperClass
-    }, [_c("div", {
-      ref: "inner",
-      class: _vm.popoverInnerClass,
-      staticStyle: {
-        position: "relative"
-      }
-    }, [_c("div", [_vm._t("popover", null, {
-      isOpen: _vm.isOpen
-    })], 2), _vm._v(" "), _vm.handleResize ? _c("ResizeObserver", {
-      on: {
-        notify: _vm.$_handleResize
-      }
-    }) : _vm._e()], 1), _vm._v(" "), _c("div", {
-      ref: "arrow",
-      class: _vm.popoverArrowClass
-    })])])]);
-  };
-
-  var __vue_staticRenderFns__ = [];
-  __vue_render__._withStripped = true;
-  /* style */
-
-  var __vue_inject_styles__ = undefined;
-  /* scoped */
-
-  var __vue_scope_id__ = undefined;
-  /* module identifier */
-
-  var __vue_module_identifier__ = undefined;
-  /* functional template */
-
-  var __vue_is_functional_template__ = false;
-  /* style inject */
-
-  /* style inject SSR */
-
-  /* style inject shadow dom */
-
-  var __vue_component__ = /*#__PURE__*/normalizeComponent({
-    render: __vue_render__,
-    staticRenderFns: __vue_staticRenderFns__
-  }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);
 
   var defineProperty = (function() {
     try {
@@ -8054,36 +6841,6 @@
 
   var merge_1 = merge;
 
-  function styleInject(css, ref) {
-    if ( ref === void 0 ) ref = {};
-    var insertAt = ref.insertAt;
-
-    if (!css || typeof document === 'undefined') { return; }
-
-    var head = document.head || document.getElementsByTagName('head')[0];
-    var style = document.createElement('style');
-    style.type = 'text/css';
-
-    if (insertAt === 'top') {
-      if (head.firstChild) {
-        head.insertBefore(style, head.firstChild);
-      } else {
-        head.appendChild(style);
-      }
-    } else {
-      head.appendChild(style);
-    }
-
-    if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(document.createTextNode(css));
-    }
-  }
-
-  var css_248z = ".resize-observer[data-v-8859cc6c]{position:absolute;top:0;left:0;z-index:-1;width:100%;height:100%;border:none;background-color:transparent;pointer-events:none;display:block;overflow:hidden;opacity:0}.resize-observer[data-v-8859cc6c] object{display:block;position:absolute;top:0;left:0;height:100%;width:100%;overflow:hidden;pointer-events:none;z-index:-1}";
-  styleInject(css_248z);
-
   function install(Vue) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     if (install.installed) return;
@@ -8092,13 +6849,12 @@
     merge_1(finalOptions, defaultOptions, options);
     plugin.options = finalOptions;
     directive.options = finalOptions;
-    Vue.directive('tooltip', directive);
-    Vue.directive('close-popover', vclosepopover);
-    Vue.component('VPopover', __vue_component__);
+    Vue.directive('tooltip', directive); // Vue.directive('close-popover', vclosepopover)
+    // Vue.component('VPopover', Popover)
   }
-  var VTooltip = directive;
-  var VClosePopover = vclosepopover;
-  var VPopover = __vue_component__;
+  var VTooltip = directive; // export const VClosePopover = vclosepopover
+  // export const VPopover = Popover
+
   var plugin = {
     install: install,
 
@@ -8124,8 +6880,6 @@
     GlobalVue.use(plugin);
   }
 
-  exports.VClosePopover = VClosePopover;
-  exports.VPopover = VPopover;
   exports.VTooltip = VTooltip;
   exports.createTooltip = createTooltip;
   exports.default = plugin;

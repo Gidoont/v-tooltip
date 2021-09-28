@@ -1,8 +1,8 @@
 import vtooltip, { defaultOptions, state } from './directives/v-tooltip'
-import vclosepopover from './directives/v-close-popover'
+// import vclosepopover from './directives/v-close-popover'
 // import Popover from './components/Popover.vue'
 import merge from 'lodash/merge'
-import 'vue-resize/dist/vue-resize.css'
+// import 'vue-resize/dist/vue-resize.css'
 
 export { createTooltip, destroyTooltip } from './directives/v-tooltip'
 
@@ -17,12 +17,12 @@ export function install (Vue, options = {}) {
   vtooltip.options = finalOptions
 
   Vue.directive('tooltip', vtooltip)
-  Vue.directive('close-popover', vclosepopover)
+  // Vue.directive('close-popover', vclosepopover)
   // Vue.component('VPopover', Popover)
 }
 
 export const VTooltip = vtooltip
-export const VClosePopover = vclosepopover
+// export const VClosePopover = vclosepopover
 // export const VPopover = Popover
 
 const plugin = {
