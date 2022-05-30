@@ -2048,6 +2048,11 @@
     "@octokit/openapi-types" "^2.0.1"
     "@types/node" ">= 8"
 
+"@popperjs/core@^2.11.0":
+  version "2.11.5"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
+  integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
+
 "@popperjs/core@^2.6.0":
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.6.0.tgz#f022195afdfc942e088ee2101285a1d31c7d727f"
@@ -14731,6 +14736,14 @@ uuid@^3.0.1, uuid@^3.3.2, uuid@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
+
+v-tooltip@^3.0.0-alpha.21:
+  version "3.0.0-beta.20"
+  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-3.0.0-beta.20.tgz#d7636ce6684315b2bf949ea13f82fd829ca3d781"
+  integrity sha512-qoOy501P/CCpnWfAtxXiO1FDem8OPtxeubk9+LJU7g9dJTVu53RDimdUtKAtp9inTFVg/vqeRhezj2NfZyWOcg==
+  dependencies:
+    "@popperjs/core" "^2.11.0"
+    vue-resize "^1.0.0"
 
 v8-compile-cache@^2.0.3:
   version "2.2.0"
