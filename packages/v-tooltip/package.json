@@ -1,5 +1,5 @@
 {
-  "name": "v-tooltip",
+  "name": "@gidoont/v-tooltip",
   "version": "3.0.0-alpha.21",
   "description": "Easy Vue tooltips, dropdowns & popovers using Popper.js",
   "author": "Guillaume Chau <guillaume.b.chau@gmail.com>",
